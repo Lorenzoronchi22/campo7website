@@ -3,10 +3,10 @@
 include 'connection.php';
 session_start();
 
-if(isset($_POST['submit'])){
+if(isset($_POST['login'])){
 
    $email = mysqli_real_escape_string($conn, $_POST['email']);
-   $pass = mysqli_real_escape_string($conn, md5($_POST['password']));
+   $pass = mysqli_real_escape_string($conn, $_POST['password']);
 
    $select_users = mysqli_query($conn, "SELECT * FROM `users` WHERE email = '$email'") or die("Errore! L'accesso non è riuscito!");
 
@@ -14,17 +14,17 @@ if(isset($_POST['submit'])){
 
     $row = mysqli_fetch_assoc($select_users);
 
-    if(password_verify()){
+    if(password_verify($pass, $row['password'])){
       if($row['user_type'] == 'admin'){
 
-        $_SESSION['admin_name'] = $row['name'];
+        $_SESSION['admin_name'] = $row['username'];
         $_SESSION['admin_email'] = $row['email'];
         $_SESSION['admin_id'] = $row['id'];
         header('location:admin_page.php');
 
       }elseif($row['user_type'] == 'user'){
 
-        $_SESSION['user_name'] = $row['name'];
+        $_SESSION['user_name'] = $row['username'];
         $_SESSION['user_email'] = $row['email'];
         $_SESSION['user_id'] = $row['id'];
         header('location:home.php');
@@ -55,9 +55,9 @@ if(isset($_POST['submit'])){
     <h3>Login</h3>
     <div class="container">
         <form action="" method="post">
-            <input type="email" name="email" id="">
-            <input type="password" name="pass" id="">
-            <input type="submit" value="Login">
+            E-mail: <input type="email" name="email" id="">
+            Password: <input type="password" name="password" id="">
+            <input type="submit" name="login" value="Login">
             <p>Non hai un account? <a href="registrati.php">Registrati</a></p>
         </form>
     </div>
