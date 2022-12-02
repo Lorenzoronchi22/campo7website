@@ -11,7 +11,7 @@ session_start();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/arena.css">
+    <link rel="stylesheet" href="css/camposportivo.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <title>La Delizia Arena</title>
@@ -19,12 +19,14 @@ session_start();
 <body>
     <?php include 'navbar.php';
     ?>
-    <h3>La Delizia Arena</h3>
+    <div class="container">
+      <h3>La Delizia Arena</h3>
 
-    <p>Descrizione campo...</p>
-    <p>Tariffa</p>
-    <p>Posizione</p>
+      <p>Descrizione campo...</p>
+      <p>Tariffa</p>
+      <p>Posizione</p>
 
+    </div>
     <?php include 'contatti.php';
     ?>
 </body>
