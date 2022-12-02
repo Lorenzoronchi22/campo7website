@@ -1,17 +1,14 @@
-<nav class="navbar navbar-primary bg-primary">
+<nav class="navbar navbar-primary" style="background-color: rgb(56, 119, 227);">
 <div class="container">
   <div class="row">
-    <div class="col">
-    <img src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
+    <div class="col navbarcol">
+      <a href="home.php" class="navbarlink">Home</a>
     </div>
-    <div class="col">
-      Home
+    <div class="col navbarcol">
+    <a href="#" class="navbarlink">Orari</a>
     </div>
-    <div class="col">
-      Orari
-    </div>
-    <div class="col">
-      Column
+    <div class="col navbarcol">
+    <a href="#" class="navbarlink">Prenota</a>
     </div>
   </div>
 </div>

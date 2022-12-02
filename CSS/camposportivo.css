@@ -7,4 +7,18 @@
     color: whitesmoke;
     text-decoration: none;
 }
-
+.contactlink:hover{
+    color: whitesmoke;
+    text-decoration: none;
+}
+.navbarlink{
+    color: whitesmoke;
+    text-decoration: none;
+}
+.navbarlink:hover{
+    color: whitesmoke;
+    text-decoration: none;
+}
+.navbarcol:hover{
+    background-color: blue;
+}
