@@ -52,7 +52,6 @@ if(isset($_POST['login'])){
     <title>Login</title>
   </head>
   <body>
-    <div class="container">
     <h3>Login</h3>
         <form action="" method="post">
             E-mail: <input type="email" name="email" id="">

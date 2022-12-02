@@ -17,9 +17,15 @@ session_start();
     <title>La Delizia Arena</title>
 </head>
 <body>
+    <?php include 'navbar.php';
+    ?>
     <h3>La Delizia Arena</h3>
 
-    <?php include 'footer.php';
+    <p>Descrizione campo...</p>
+    <p>Tariffa</p>
+    <p>Posizione</p>
+
+    <?php include 'contatti.php';
     ?>
 </body>
 </html>
