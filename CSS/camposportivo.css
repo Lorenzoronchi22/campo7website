@@ -19,6 +19,42 @@
     color: whitesmoke;
     text-decoration: none;
 }
+
 .navbarcol:hover{
     background-color: blue;
+}
+
+.formlogin{
+    width: 40%;
+    background-color: rgb(56, 119, 227);
+    padding: 10px;
+    margin:170px auto auto auto;
+    border-radius: 8px;
+}
+
+.registerlogin{
+    width: 40%;
+    background-color: rgb(56, 119, 227);
+    padding: 10px;
+    margin:130px auto auto auto;
+    border-radius: 8px;
+}
+
+.formtitle{
+    width: 100%;
+    text-align: center;
+    color: whitesmoke;
+}
+
+.forminput{
+    width: 100%;
+}
+
+.registerp{
+    width:100%;
+    text-align: center;
+}
+
+#login{
+    width: 100%;
 }

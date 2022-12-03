@@ -5,7 +5,7 @@
       <a href="home.php" class="navbarlink">Home</a>
     </div>
     <div class="col navbarcol">
-    <a href="#" class="navbarlink">Orari</a>
+    <a href="orari.php" class="navbarlink">Orari</a>
     </div>
     <div class="col navbarcol">
     <a href="#" class="navbarlink">Prenota</a>

@@ -36,23 +36,53 @@ if(isset($_POST['registra'])){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="stylesheet" href="CSS/camposportivo.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+    <style>
+      .col{
+        margin: 5px auto;
+      }
+    </style>
     <title>Registrati</title>
   </head>
   <body>
-    <h3>Registrati</h3>
-    <div class="container">
-        <form action="" method="post">
-            Username:<input type="text" name="username">
-            E-mail:<input type="email" name="email">
-            Password:<input type="password" name="password">
-            Conferma password:<input type="password" name="cpassword">
-            <input type="submit" name="registra" value="Registrati">
-            <p>Hai già un account? <a href="login.php">Login</a></p>
-        </form>
+  <div class="container">
+  <div class="registerlogin">
+    <h3 class="formtitle">Registrati</h3>
+    <form action="" method="post">
+      <div class="row">
+        <div class="col">
+          <input type="text" placeholder="username" name="username" class="forminput">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <input type="email" placeholder="email" name="email" class="forminput">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <input type="password" placeholder="password" name="password" class="forminput">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <input type="password" placeholder="password di conferma" name="cpassword" class="forminput">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <input type="submit" style="width: 100%;" class="btn btn-secondary" name="registra" value="Registrati">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <p class="registerp">Hai già un account? <a href="login.php" class="navbarlink">Login</a></p>
+        </div>
+      </div>
+      </form>
     </div>
+  </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   </body>
 </html>
