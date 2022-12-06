@@ -26,7 +26,7 @@ if(isset($_POST['login'])){
 
         $_SESSION['user_name'] = $row['username'];
         $_SESSION['user_email'] = $row['email'];
-        $_SESSION['user_id'] = $row['id'];
+        $_SESSION['user_id'] = $row['user_id'];
         header('location:home.php');
       }     
     }else{

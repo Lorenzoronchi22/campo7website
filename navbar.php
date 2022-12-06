@@ -8,7 +8,7 @@
     <a href="orari.php" class="navbarlink">Orari</a>
     </div>
     <div class="col navbarcol">
-    <a href="#" class="navbarlink">Prenota</a>
+    <a href="prenota.php" class="navbarlink">Prenota</a>
     </div>
   </div>
 </div>
