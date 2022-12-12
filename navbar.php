@@ -1,14 +1,3 @@
-<?php 
-if(isset($message)){
-  foreach($message as $message){
-     echo '
-     <div class="message">
-        <span>'.$message.'</span>
-        <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
-     </div>
-     ';
-  }
-}?>
 <nav class="navbar navbar-primary" style="background-color: rgb(56, 119, 227);">
 <div class="container">
   <div class="row">
@@ -20,6 +9,9 @@ if(isset($message)){
     </div>
     <div class="col navbarcol">
     <a href="prenota.php" class="navbarlink">Prenota</a>
+    </div>
+    <div class="col navbarcol">
+    <a href="logout.php" class="navbarlink" name="logout" id="logout">Logout</a>
     </div>
   </div>
 </div>

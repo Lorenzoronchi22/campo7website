@@ -1,10 +1,10 @@
 
-function setDurata(){
+function setDurata(id){
     ora = document.getElementById("ora").value;
     if(ora == 22){
-        document.getElementById("durata").max = 1;
-        document.getElementById("durata").value = 1;
+        document.getElementById("id").max = 1;
+        document.getElementById("id").value = 1;
     }else{
-        document.getElementById("durata").max = 2;
+        document.getElementById("id").max = 2;
     }
 }
