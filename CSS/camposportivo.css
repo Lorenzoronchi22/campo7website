@@ -1,8 +1,9 @@
 .footer{
+    position: static;
+    width: 100%;
     background-color: rgb(56, 119, 227);
     color: whitesmoke;
     padding: 10px;
-    position: sticky;
 }
 .contactlink{
     color: whitesmoke;
