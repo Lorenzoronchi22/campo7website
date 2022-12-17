@@ -67,11 +67,11 @@ if(!isset($user_id)){
               affinché la Polisportiva sia e rappresenti sempre un luogo di serietà e di crescita secondo
               i valori civici e sportivi."
             </p>
-            <p>Il Presidente</p>
+            <p style="font-style: italic;">Il Presidente</p>
           </div>
           <div class="col tablecol">
             <h4 style="padding: 10px; text-align: center;">Dove siamo</h4>
-            <p>
+            <p style="margin:auto;">
               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2634.1865114971974!2d10.319502886892762!3d45.61419138761769!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478182e216dbe1fd%3A0x7f93cd7fd47e2181!2sPolisportiva!5e0!3m2!1sit!2sit!4v1671203244977!5m2!1sit!2sit" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </p>
           </div>

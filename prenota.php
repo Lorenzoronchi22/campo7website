@@ -116,6 +116,7 @@ if(isset($_POST['prenota'])){
         .titlepage{
           text-align: center;
         }
+
     </style>
 </head>
 <body>
@@ -171,13 +172,13 @@ if(isset($_POST['prenota'])){
       <div class="container" style="width: 70%;">
       <div class="row tablerow">
             <div class="col tablecol">
-              <p class="p_prenota">Data: <span><?php echo date('d-m-Y',strtotime($fetch_prenotazioni['data'])); ?></span></p>
+              <p class="p_prenota">Data: <?php echo date('d-m-Y',strtotime($fetch_prenotazioni['data'])); ?></p>
             </div>
             <div class="col tablecol">
-              <p class="p_prenota">Ora: <span><?php echo $fetch_prenotazioni['ora']; ?>:00</span></p>
+              <p class="p_prenota">Ora: <?php echo $fetch_prenotazioni['ora']; ?>:00</p>
             </div>
             <div class="col tablecol">
-              <p class="p_prenota">Durata(ore): <span><?php echo $fetch_prenotazioni['durata']; ?></span></p>
+              <p class="p_prenota">Durata(ore): <?php echo $fetch_prenotazioni['durata']; ?></p>
             </div>
           </div>
       </div>

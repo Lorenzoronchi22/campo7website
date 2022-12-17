@@ -55,7 +55,7 @@ if(isset($_POST['login'])){
     </style>
   <title>Login</title>
   </head>
-  <body>
+  <body style="background-image: url('img/backlogreg.png'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover;">
     <div class="container">
       <div class="formlogin">
         <h3 class="formtitle">Login</h3>
