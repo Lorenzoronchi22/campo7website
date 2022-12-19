@@ -3,8 +3,11 @@ include('connection.php');
 
 session_start();
 
-$user_id = $_SESSION['user_id'];
-$username = $_SESSION['user_name'];
+$admin_id = $_SESSION['admin_id'];
+
+if(!isset($admin_id)){
+   header('location:login.php');
+}
 
 if(isset($_POST['elimina'])){
     $id = mysqli_real_escape_string($conn, $_POST['prenotazioneid']);

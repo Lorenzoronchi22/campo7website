@@ -2,6 +2,12 @@
 include('connection.php');
 session_start();
 
+$user_id = $_SESSION['user_id'];
+$username = $_SESSION['user_name'];
+
+if(!isset($user_id)){
+  header('location:login.php');
+}
 $datanow = date('Y-m-d');
 $dataday = date('d-m-Y', strtotime($datanow));
 $prenot_query14 = mysqli_query($conn, "SELECT * FROM `prenotazioni` WHERE data = '$datanow' AND ora = '14'") or die('query failed');

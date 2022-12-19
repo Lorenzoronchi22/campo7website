@@ -19,7 +19,7 @@ if(isset($_POST['login'])){
 
         $_SESSION['admin_name'] = $row['username'];
         $_SESSION['admin_email'] = $row['email'];
-        $_SESSION['admin_id'] = $row['id'];
+        $_SESSION['admin_id'] = $row['user_id'];
         header('location:admin_page.php');
 
       }elseif($row['user_type'] == 'user'){
