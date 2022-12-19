@@ -46,6 +46,7 @@ if(isset($_POST['registra'])){
     <title>Registrati</title>
   </head>
   <body style="background-image: url('img/backlogreg.png'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover;">
+  <?php include 'message.php'; ?>
   <div class="container">
   <div class="registerlogin">
     <h3 class="formtitle">Registrati</h3>

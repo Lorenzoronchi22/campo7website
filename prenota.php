@@ -24,8 +24,8 @@ if(isset($_POST['prenota'])){
               $ora2= strval($ora + 1);
               $prenot_query = mysqli_query($conn, "SELECT * FROM `prenotazioni` WHERE data = '$data' AND (ora = '$ora' OR ora = '$ora2')") or die('query failed');
               if(mysqli_num_rows($prenot_query) == 0){
-                mysqli_query($conn, "INSERT INTO `prenotazioni`(username, data, ora, durata) VALUES('$username', '$data', '$ora', '$durata')") or die('query failed');
-                mysqli_query($conn, "INSERT INTO `prenotazioni`(username, data, ora, durata) VALUES('$username', '$data', '$ora2', '$durata')") or die('query failed');
+                mysqli_query($conn, "INSERT INTO `prenotazioni`(user_id, username, data, ora, durata) VALUES('$user_id', '$username', '$data', '$ora', '$durata')") or die('query failed');
+                mysqli_query($conn, "INSERT INTO `prenotazioni`(user_id, username, data, ora, durata) VALUES('$user_id', '$username', '$data', '$ora2', '$durata')") or die('query failed');
                 $message[] = "prenotazione avvenuta con successo!";
               }else{
                 $message[] = "campo già prenotato per l'ora scelta";
@@ -37,7 +37,7 @@ if(isset($_POST['prenota'])){
             if(mysqli_num_rows($control_query) < 2){
               $prenot_query = mysqli_query($conn, "SELECT * FROM `prenotazioni` WHERE data = '$data' AND ora = '$ora'") or die('query failed');
               if(mysqli_num_rows($prenot_query) == 0){
-                mysqli_query($conn, "INSERT INTO `prenotazioni`(username, data, ora, durata) VALUES('$username', '$data', '$ora', '$durata')") or die('query failed');
+                mysqli_query($conn, "INSERT INTO `prenotazioni`(user_id, username, data, ora, durata) VALUES('$user_id', '$username', '$data', '$ora', '$durata')") or die('query failed');
                 $message[] = "prenotazione avvenuta con successo!";
               }else{
                 $message[] = "campo già prenotato per l'ora scelta!";
@@ -167,18 +167,31 @@ if(isset($_POST['prenota'])){
       <?php
       $prenotazioni = mysqli_query($conn, "SELECT * FROM `prenotazioni` WHERE username ='$username' ORDER BY data") or die('query failed');
       if(mysqli_num_rows($prenotazioni) > 0){
-          while($fetch_prenotazioni = mysqli_fetch_assoc($prenotazioni)){
+        echo '<div class="container" style="width: 70%;">
+        <div class="row tablerow">
+              <div class="col tablecol" style="background-color: rgb(138, 179, 248)">
+                <p>Data:</p>
+              </div>
+              <div class="col tablecol" style="background-color: rgb(138, 179, 248)">
+                <p>Ora:</p>
+              </div>
+              <div class="col tablecol" style="background-color: rgb(138, 179, 248)">
+                <p>Durata(ore):</p>
+              </div>
+            </div>
+        </div>';
+        while($fetch_prenotazioni = mysqli_fetch_assoc($prenotazioni)){
       ?>
       <div class="container" style="width: 70%;">
       <div class="row tablerow">
             <div class="col tablecol">
-              <p class="p_prenota">Data: <?php echo date('d-m-Y',strtotime($fetch_prenotazioni['data'])); ?></p>
+              <p><?php echo date('d-m-Y',strtotime($fetch_prenotazioni['data'])); ?></p>
             </div>
             <div class="col tablecol">
-              <p class="p_prenota">Ora: <?php echo $fetch_prenotazioni['ora']; ?>:00</p>
+              <p><?php echo $fetch_prenotazioni['ora']; ?>:00</p>
             </div>
             <div class="col tablecol">
-              <p class="p_prenota">Durata(ore): <?php echo $fetch_prenotazioni['durata']; ?></p>
+              <p><?php echo $fetch_prenotazioni['durata']; ?></p>
             </div>
           </div>
       </div>
