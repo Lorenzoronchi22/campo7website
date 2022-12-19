@@ -47,6 +47,15 @@ if(isset($_POST['update'])){
     }else{
         $message[] = "I contatti sono stati aggiornati!";
     }
+}   
+
+if(isset($_POST['updatetar'])){
+    $tariffa = mysqli_real_escape_string($conn, $_POST['tariffacampo']);
+    if($tariffa > 0){
+        mysqli_query($conn, "UPDATE `tariffe` SET tariffacampo = '$tariffa' WHERE tariffa_id = '1'") or die('query failed');
+    }else{
+        $message[] ="La tariffa non può essere minore di 1€/ora!";
+    }
 }
 
 ?>
@@ -82,10 +91,10 @@ if(isset($_POST['update'])){
 
         .counter{
             background-color: rgb(56, 119, 227);
-            width: 50px;
-            height: 50px;
+            width: 100px;
+            height: 100px;
             margin : auto;
-            padding-top: 10px;
+            padding-top: 30px;
         }
 
         .countertext{
@@ -109,29 +118,68 @@ if(isset($_POST['update'])){
                 ?>
                 <h4>Utenti</h4>
                 <div class="counter">
-                    <h4 class="countertext"><?php echo $n_users ?></h4>
+                    <h2 class="countertext"><?php echo $n_users ?></h2>
                 </div>
             </div>
             <div class="col tablecol">
-            <?php 
+                <?php 
                 $prenotazioni = mysqli_query($conn, "SELECT * FROM `prenotazioni`");
                 $n_prenotazioni = mysqli_num_rows($prenotazioni);
                 ?>
                 <h4>Prenotazioni</h4>
                 <div class="counter">
-                    <h4 class="countertext"><?php echo $n_prenotazioni ?></h4>
+                    <h2 class="countertext"><?php echo $n_prenotazioni ?></h2>
                 </div>
             </div>
         </div>
         <div class="row tablerow">
             <div class="col tablecol">
-                <h4>Tariffa</h4>
+                <?php 
+                $tariffa_query = mysqli_query($conn, "SELECT * FROM `tariffe` WHERE tariffa_id = '1'");
+                $fetch_tariffa = mysqli_fetch_assoc($tariffa_query);
+                $tariffacampo = $fetch_tariffa['tariffacampo'];
+                ?>
+                <h4>Tariffa (oraria)</h4>
+                <div class="counter">
+                    <h2 class="countertext"><?php echo $tariffacampo; ?>€</h2>
+                </div>
             </div>
             <div class="col tablecol">
+                <?php 
+                $prenot = mysqli_query($conn, "SELECT * FROM `prenotazioni`");
+                $payment = 0;
+                $this_month = date('m');
+                while($fetch_prenot = mysqli_fetch_assoc($prenot)){
+                    if(date('m', strtotime($fetch_prenot['data'])) == $this_month){
+                        $payment = $payment + intval($fetch_prenot['tariffa_prenotazione']);
+                    }
+                }
+                ?>
                 <h4>Totale Incassi (Mensili)</h4>
+                <div class="counter">
+                    <h2 class="countertext"><?php echo $payment; ?>€</h2>
+                </div>
             </div>
         </div>
     </div>
+    <div class="container formprenota" style="padding:10px; width: 50%; text-align: center;">
+        <form action="" method="post">
+            <h3>Modifica tariffa</h3>
+            <div class="row tablerow">
+                <div class="col">
+                    Tariffa (€):
+                </div>
+                <div class="col">
+                    <input type="number" name="tariffacampo" id="tariffacampo" min="1" value="<?php echo $tariffacampo ?>">
+                </div>
+            </div>
+            <input type="submit" name="updatetar" id="updatetar" class="btn btn-secondary" value="Modifica" style="width: 200px; margin-top: 5px;">
+        </form>
+    </div>
+    <?php
+    $contact_query1 = mysqli_query($conn, "SELECT * FROM `contacts`") or die('query failed');
+    $fetch_contact1 = mysqli_fetch_assoc($contact_query1); 
+    ?>
     <div class="container formprenota" style="padding:10px; width: 50%; text-align: center;">
         <form action="" method="post">
             <h3>Modifica Contatti</h3>
@@ -140,15 +188,15 @@ if(isset($_POST['update'])){
                     Numero telefono:
                 </div>
                 <div class="col">
-                    <input type="tel" name="phone" id="phone">
+                    <input type="tel" name="phone" id="phone" placeholder= "<?php echo $fetch_contact1['phone']; ?>">
                 </div>
             </div>
             <div class="row tablerow">
                 <div class="col">
-                    Email: 
+                    E-mail: 
                 </div>
                 <div class="col">
-                    <input type="email" name="pol_email" id="pol_email">
+                    <input type="email" name="pol_email" id="pol_email" placeholder= "<?php echo $fetch_contact1['con_email']; ?>">
                 </div>
             </div>
             <div class="row tablerow">
@@ -156,7 +204,7 @@ if(isset($_POST['update'])){
                     Facebook: 
                 </div>
                 <div class="col">
-                    <input type="text" name="fblink" id="fblink">
+                    <input type="text" name="fblink" id="fblink" placeholder= "<?php echo $fetch_contact1['facebook']; ?>">
                 </div>
             </div>
             <div class="row tablerow">
@@ -164,10 +212,10 @@ if(isset($_POST['update'])){
                     Instagram: 
                 </div>
                 <div class="col">
-                    <input type="text" name="iglink" id="iglink">
+                    <input type="text" name="iglink" id="iglink" placeholder= "<?php echo $fetch_contact1['instagram']; ?>">
                 </div>
             </div>
-                <input type="submit" name="update" id="update" class="btn btn-warning" value="Modifica" style="width: 200px; margin-top: 5px;">
+                <input type="submit" name="update" id="update" class="btn btn-secondary" value="Modifica" style="width: 200px; margin-top: 5px;">
             </div>
         </form>
     </div>

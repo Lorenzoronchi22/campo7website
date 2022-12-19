@@ -96,6 +96,9 @@ if(isset($_POST['elimina'])){
           <div class="col tablecol" style="background-color: rgb(138, 179, 248)">
           <p>durata:</p>
         </div>
+        <div class="col tablecol" style="background-color: rgb(138, 179, 248)">
+        <p>tariffa:</p>
+      </div>
         </div>
     </div>';
     while($fetch_user = mysqli_fetch_assoc($user)){    
@@ -116,6 +119,9 @@ if(isset($_POST['elimina'])){
             </div>
             <div class="col tablecol">
               <p><?php echo $fetch_user['durata']; ?></p>
+            </div>
+            <div class="col tablecol">
+              <p><?php echo $fetch_user['tariffa_prenotazione']; ?>€</p>
             </div>
           </div>
       </div>

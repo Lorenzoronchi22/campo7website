@@ -9,7 +9,9 @@ $username = $_SESSION['user_name'];
 if(!isset($user_id)){
   header('location:login.php');
   }
-
+$tariffa_query = mysqli_query($conn, "SELECT * FROM `tariffe` WHERE tariffa_id = '1'") or die('query failed');
+$fetch_tariffa = mysqli_fetch_assoc($tariffa_query);
+$tariffa = $fetch_tariffa['tariffacampo'];
 $today = date('Y-m-d');
 if(isset($_POST['prenota'])){
   $data = mysqli_real_escape_string($conn, $_POST['data']);
@@ -24,8 +26,8 @@ if(isset($_POST['prenota'])){
               $ora2= strval($ora + 1);
               $prenot_query = mysqli_query($conn, "SELECT * FROM `prenotazioni` WHERE data = '$data' AND (ora = '$ora' OR ora = '$ora2')") or die('query failed');
               if(mysqli_num_rows($prenot_query) == 0){
-                mysqli_query($conn, "INSERT INTO `prenotazioni`(user_id, username, data, ora, durata) VALUES('$user_id', '$username', '$data', '$ora', '$durata')") or die('query failed');
-                mysqli_query($conn, "INSERT INTO `prenotazioni`(user_id, username, data, ora, durata) VALUES('$user_id', '$username', '$data', '$ora2', '$durata')") or die('query failed');
+                mysqli_query($conn, "INSERT INTO `prenotazioni`(user_id, username, data, ora, durata, tariffa_prenotazione) VALUES('$user_id', '$username', '$data', '$ora', '$durata', '$tariffa')") or die('query failed');
+                mysqli_query($conn, "INSERT INTO `prenotazioni`(user_id, username, data, ora, durata, tariffa_prenotazione) VALUES('$user_id', '$username', '$data', '$ora2', '$durata', '$tariffa')") or die('query failed');
                 $message[] = "prenotazione avvenuta con successo!";
               }else{
                 $message[] = "campo già prenotato per l'ora scelta";
@@ -37,7 +39,7 @@ if(isset($_POST['prenota'])){
             if(mysqli_num_rows($control_query) < 2){
               $prenot_query = mysqli_query($conn, "SELECT * FROM `prenotazioni` WHERE data = '$data' AND ora = '$ora'") or die('query failed');
               if(mysqli_num_rows($prenot_query) == 0){
-                mysqli_query($conn, "INSERT INTO `prenotazioni`(user_id, username, data, ora, durata) VALUES('$user_id', '$username', '$data', '$ora', '$durata')") or die('query failed');
+                mysqli_query($conn, "INSERT INTO `prenotazioni`(user_id, username, data, ora, durata, tariffa_prenotazione) VALUES('$user_id', '$username', '$data', '$ora', '$durata', '$tariffa')") or die('query failed');
                 $message[] = "prenotazione avvenuta con successo!";
               }else{
                 $message[] = "campo già prenotato per l'ora scelta!";
@@ -178,6 +180,9 @@ if(isset($_POST['prenota'])){
               <div class="col tablecol" style="background-color: rgb(138, 179, 248)">
                 <p>Durata(ore):</p>
               </div>
+              <div class="col tablecol" style="background-color: rgb(138, 179, 248)">
+              <p>Tariffa (oraria):</p>
+            </div>
             </div>
         </div>';
         while($fetch_prenotazioni = mysqli_fetch_assoc($prenotazioni)){
@@ -192,6 +197,9 @@ if(isset($_POST['prenota'])){
             </div>
             <div class="col tablecol">
               <p><?php echo $fetch_prenotazioni['durata']; ?></p>
+            </div>
+            <div class="col tablecol">
+              <p><?php echo $fetch_prenotazioni['tariffa_prenotazione']; ?>€</p>
             </div>
           </div>
       </div>
