@@ -26,8 +26,9 @@ if(isset($_POST['prenota'])){
               $ora2= strval($ora + 1);
               $prenot_query = mysqli_query($conn, "SELECT * FROM `prenotazioni` WHERE data = '$data' AND (ora = '$ora' OR ora = '$ora2')") or die('query failed');
               if(mysqli_num_rows($prenot_query) == 0){
-                mysqli_query($conn, "INSERT INTO `prenotazioni`(user_id, username, data, ora, durata, tariffa_prenotazione) VALUES('$user_id', '$username', '$data', '$ora', '$durata', '$tariffa')") or die('query failed');
-                mysqli_query($conn, "INSERT INTO `prenotazioni`(user_id, username, data, ora, durata, tariffa_prenotazione) VALUES('$user_id', '$username', '$data', '$ora2', '$durata', '$tariffa')") or die('query failed');
+                $codice_prenotazione = $user_id . $username . $data . $ora . $durata . $tariffa;
+                mysqli_query($conn, "INSERT INTO `prenotazioni`(user_id, username, data, ora, durata, tariffa_prenotazione, codice_prenotazione) VALUES('$user_id', '$username', '$data', '$ora', '$durata', '$tariffa', '$codice_prenotazione')") or die('query failed');
+                mysqli_query($conn, "INSERT INTO `prenotazioni`(user_id, username, data, ora, durata, tariffa_prenotazione, codice_prenotazione) VALUES('$user_id', '$username', '$data', '$ora2', '$durata', '$tariffa', '$codice_prenotazione')") or die('query failed');
                 $message[] = "prenotazione avvenuta con successo!";
               }else{
                 $message[] = "campo già prenotato per l'ora scelta";
@@ -39,7 +40,8 @@ if(isset($_POST['prenota'])){
             if(mysqli_num_rows($control_query) < 2){
               $prenot_query = mysqli_query($conn, "SELECT * FROM `prenotazioni` WHERE data = '$data' AND ora = '$ora'") or die('query failed');
               if(mysqli_num_rows($prenot_query) == 0){
-                mysqli_query($conn, "INSERT INTO `prenotazioni`(user_id, username, data, ora, durata, tariffa_prenotazione) VALUES('$user_id', '$username', '$data', '$ora', '$durata', '$tariffa')") or die('query failed');
+                $codice_prenotazione = $user_id . $username . $data . $ora . $durata . $tariffa;
+                mysqli_query($conn, "INSERT INTO `prenotazioni`(user_id, username, data, ora, durata, tariffa_prenotazione, codice_prenotazione) VALUES('$user_id', '$username', '$data', '$ora', '$durata', '$tariffa', '$codice_prenotazione')") or die('query failed');
                 $message[] = "prenotazione avvenuta con successo!";
               }else{
                 $message[] = "campo già prenotato per l'ora scelta!";
@@ -60,28 +62,6 @@ if(isset($_POST['prenota'])){
       }else{
         $message[] = "Attenzione! Non è consentito prenotare in una data già trascorsa!";
       }
-    }
-  }
-
-  if(isset($_POST['elimina'])){
-    $data = mysqli_real_escape_string($conn, $_POST['data']);
-    $ora1 = mysqli_real_escape_string($conn, $_POST['ora']);
-    $durata = mysqli_real_escape_string($conn, $_POST['durata']);
-    $delete_query = mysqli_query($conn, "SELECT * FROM `prenotazioni` WHERE username ='$username' AND data = '$data' AND ora = '$ora1' AND durata = '$durata'") or die('query failed');
-    if(mysqli_num_rows($delete_query) > 0){
-        if($data > $today){
-          if(intval($durata) == 2){
-            mysqli_query($conn, "DELETE FROM `prenotazioni` WHERE username ='$username' AND data = '$data' AND durata = '$durata'") or die('query failed');
-            $message[] = "La prenotazione è stata eliminata con successo!";
-          }else{
-            mysqli_query($conn, "DELETE FROM `prenotazioni` WHERE username ='$username' AND data = '$data' AND ora = '$ora' AND durata = '$durata'") or die('query failed');
-            $message[] = "La prenotazione è stata eliminata con successo!";
-          }
-        }else{
-          $message[] = "Non è più possibile cancellare la prenotazione!";
-        }
-    }else{
-      $message[] = "La prenotazione che si vuole eliminare è inesistente! Controllare l'orario!";
     }
   }
 ?>
@@ -161,7 +141,6 @@ if(isset($_POST['prenota'])){
               <input type="submit" class="btn btn-secondary" name="prenota" value="Conferma la prenotazione">
             </div>
             <div class="col">
-              <input type="submit" class="btn btn-danger" name="elimina" value="Elimina la prenotazione">
             </div>
           </div>
         </form>
@@ -183,6 +162,9 @@ if(isset($_POST['prenota'])){
               <div class="col tablecol" style="background-color: rgb(138, 179, 248)">
               <p>Tariffa (oraria):</p>
             </div>
+            <div class="col tablecol" style="background-color: rgb(138, 179, 248)">
+            <p>Codice:</p>
+          </div>
             </div>
         </div>';
         while($fetch_prenotazioni = mysqli_fetch_assoc($prenotazioni)){
@@ -200,6 +182,9 @@ if(isset($_POST['prenota'])){
             </div>
             <div class="col tablecol">
               <p><?php echo $fetch_prenotazioni['tariffa_prenotazione']; ?>€</p>
+            </div>
+            <div class="col tablecol">
+              <p><?php echo $fetch_prenotazioni['codice_prenotazione']; ?></p>
             </div>
           </div>
       </div>

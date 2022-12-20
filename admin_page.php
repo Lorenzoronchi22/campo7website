@@ -123,7 +123,7 @@ if(isset($_POST['updatetar'])){
             </div>
             <div class="col tablecol">
                 <?php 
-                $prenotazioni = mysqli_query($conn, "SELECT * FROM `prenotazioni`");
+                $prenotazioni = mysqli_query($conn, "SELECT COUNT(prenotazione_id) FROM `prenotazioni` GROUP BY codice_prenotazione");
                 $n_prenotazioni = mysqli_num_rows($prenotazioni);
                 ?>
                 <h4>Prenotazioni</h4>

@@ -91,7 +91,7 @@ if(isset($_POST['orario'])){
     <div class="container" style="padding:10px;">
     <img src="img/title.png" alt="" srcset="">
       <h3 class="titlepage" style="margin:auto; padding: 5px;">Orario del giorno <?php echo $dataday ?></h3>
-        <div class="container" style="width: 70%;">
+        <div class="container" style="width: 50%;">
           <div class="row tablerow">
             <div class="col tablecol" style="background-color: rgb(138, 179, 248)">
               14:00 - 15:00
@@ -165,7 +165,7 @@ if(isset($_POST['orario'])){
             </div>
           </div>
         </div>
-        <div class="container formprenota" style="padding:10px; width:70%; text-align: center;">
+        <div class="container formprenota" style="padding:10px; width:50%; text-align: center;">
           <form action="" method="post">
             <div class="row tablerow">
                 <div class="col" style="margin:auto;">

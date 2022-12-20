@@ -12,11 +12,11 @@ if(!isset($admin_id)){
 if(isset($_POST['elimina'])){
     $id = mysqli_real_escape_string($conn, $_POST['prenotazioneid']);
     $control_id = mysqli_query($conn, "SELECT * FROM `prenotazioni` WHERE prenotazione_id = '$id'") or die('query failed');
-    $fetch_prenotazione = mysqli_fetch_assoc($control_id);
-    $data = $fetch_prenotazione['data'];
+    $fetch_control_id = mysqli_fetch_assoc($control_id);
+    $code = $fetch_control_id['codice_prenotazione'];
     if (mysqli_num_rows($control_id) > 0){
         if(intval($id) >= 0){
-            mysqli_query($conn, "DELETE FROM `prenotazioni` WHERE prenotazione_id = '$id' OR data = '$data'") or die('query failed');
+            mysqli_query($conn, "DELETE FROM `prenotazioni` WHERE codice_prenotazione = '$code'") or die('query failed');
             $message[] = "Prenotazione eliminato!";
         }else{
             $message[] = "Attenzione! L'id non può essere minore di zero!";
@@ -115,7 +115,7 @@ if(isset($_POST['elimina'])){
               <p><?php echo date('d-m-Y',strtotime($fetch_user['data'])); ?></p>
             </div>
             <div class="col tablecol">
-              <p><?php echo $fetch_user['ora']; ?></p>
+              <p><?php echo $fetch_user['ora']; ?>:00</p>
             </div>
             <div class="col tablecol">
               <p><?php echo $fetch_user['durata']; ?></p>
