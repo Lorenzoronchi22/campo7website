@@ -43,7 +43,7 @@ if(!isset($user_id)){
           </div>
         </div>
       </div>
-      <div class="container" style="margin-top: 20px;">
+      <div class="container" style="margin-top: 20px; background-color: rgb(138, 179, 248); border: 1px solid rgb(56, 119, 227);">
         <div class="row tablerow">
           <div class="col tablecol">
             <h4 style="padding: 10px; text-align: center;">La parola del presidente</h4>
@@ -71,7 +71,7 @@ if(!isset($user_id)){
           </div>
           <div class="col tablecol">
             <h4 style="padding: 10px; text-align: center;">Dove siamo</h4>
-            <p style="margin:auto;">
+            <p style="margin-top:75px;">
               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2634.1865114971974!2d10.319502886892762!3d45.61419138761769!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478182e216dbe1fd%3A0x7f93cd7fd47e2181!2sPolisportiva!5e0!3m2!1sit!2sit!4v1671203244977!5m2!1sit!2sit" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </p>
           </div>
