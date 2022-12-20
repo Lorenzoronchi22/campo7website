@@ -111,7 +111,7 @@ if(isset($_POST['updatetar'])){
     <img src="img/title.png" srcset="">
     <div class="container" style="width: 50%; text-align: center;">
         <div class="row tablerow">
-            <div class="col tablecol">
+            <div class="col tablecol" style="margin-right: 3px;">
                 <?php 
                 $users = mysqli_query($conn, "SELECT * FROM `users`");
                 $n_users = mysqli_num_rows($users);
@@ -133,7 +133,7 @@ if(isset($_POST['updatetar'])){
             </div>
         </div>
         <div class="row tablerow">
-            <div class="col tablecol">
+            <div class="col tablecol" style="margin-right: 3px;">
                 <?php 
                 $tariffa_query = mysqli_query($conn, "SELECT * FROM `tariffe` WHERE tariffa_id = '1'");
                 $fetch_tariffa = mysqli_fetch_assoc($tariffa_query);

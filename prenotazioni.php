@@ -17,7 +17,7 @@ if(isset($_POST['elimina'])){
     if (mysqli_num_rows($control_id) > 0){
         if(intval($id) >= 0){
             mysqli_query($conn, "DELETE FROM `prenotazioni` WHERE codice_prenotazione = '$code'") or die('query failed');
-            $message[] = "Prenotazione eliminato!";
+            $message[] = "Prenotazione eliminata!";
         }else{
             $message[] = "Attenzione! L'id non può essere minore di zero!";
         }
@@ -65,7 +65,7 @@ if(isset($_POST['elimina'])){
     <img src="img/title.png" srcset="">
     <div class="container formprenota" style="padding:10px; width: 70%; text-align: center;">
         <form action="" method="post">
-            <h3>Prenotazioni</h3>
+            <h3>Tutte le prenotazioni</h3>
             <div class="row tablerow">
                 <div class="col">
                     Id: <input type="number" name="prenotazioneid" id="prenotazioneid" value=1 min=0>
@@ -81,19 +81,19 @@ if(isset($_POST['elimina'])){
     if(mysqli_num_rows($user) > 0){
     echo'<div class="container" style="width: 70%;">
     <div class="row tablerow">
-          <div class="col tablecol" style="background-color: rgb(138, 179, 248)">
+          <div class="col tablecol" style="background-color: rgb(138, 179, 248); margin-right: 3px;">
             <p>Id:</p>
           </div>
-          <div class="col tablecol" style="background-color: rgb(138, 179, 248)">
+          <div class="col tablecol" style="background-color: rgb(138, 179, 248); margin-right: 3px;">
             <p>username:</p>
           </div>
-          <div class="col tablecol" style="background-color: rgb(138, 179, 248)">
+          <div class="col tablecol" style="background-color: rgb(138, 179, 248); margin-right: 3px;">
             <p>data:</p>
             </div>
-          <div class="col tablecol" style="background-color: rgb(138, 179, 248)">
+          <div class="col tablecol" style="background-color: rgb(138, 179, 248); margin-right: 3px;">
             <p>ora:</p>
           </div>
-          <div class="col tablecol" style="background-color: rgb(138, 179, 248)">
+          <div class="col tablecol" style="background-color: rgb(138, 179, 248); margin-right: 3px;">
           <p>durata:</p>
         </div>
         <div class="col tablecol" style="background-color: rgb(138, 179, 248)">
@@ -105,19 +105,19 @@ if(isset($_POST['elimina'])){
     ?>
     <div class="container" style="width: 70%;">
       <div class="row tablerow">
-            <div class="col tablecol">
+            <div class="col tablecol" style="margin-right: 3px;">
               <p><?php echo $fetch_user['prenotazione_id']; ?></p>
             </div>
-            <div class="col tablecol">
+            <div class="col tablecol" style="margin-right: 3px;">
               <p><?php echo $fetch_user['username']; ?></p>
             </div>
-            <div class="col tablecol">
+            <div class="col tablecol" style="margin-right: 3px;">
               <p><?php echo date('d-m-Y',strtotime($fetch_user['data'])); ?></p>
             </div>
-            <div class="col tablecol">
+            <div class="col tablecol" style="margin-right: 3px;">
               <p><?php echo $fetch_user['ora']; ?>:00</p>
             </div>
-            <div class="col tablecol">
+            <div class="col tablecol" style="margin-right: 3px;">
               <p><?php echo $fetch_user['durata']; ?></p>
             </div>
             <div class="col tablecol">

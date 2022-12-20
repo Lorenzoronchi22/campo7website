@@ -80,13 +80,13 @@ if(isset($_POST['elimina'])){
     if(mysqli_num_rows($user) > 0){
     echo'<div class="container" style="width: 70%;">
     <div class="row tablerow">
-          <div class="col tablecol" style="background-color: rgb(138, 179, 248)">
+          <div class="col tablecol" style="background-color: rgb(138, 179, 248); margin-right: 3px;">
             <p>Id:</p>
           </div>
-          <div class="col tablecol" style="background-color: rgb(138, 179, 248)">
+          <div class="col tablecol" style="background-color: rgb(138, 179, 248); margin-right: 3px;">
             <p>username:</p>
           </div>
-          <div class="col tablecol" style="background-color: rgb(138, 179, 248)">
+          <div class="col tablecol" style="background-color: rgb(138, 179, 248);">
             <p>email:</p>
           </div>
         </div>
@@ -95,10 +95,10 @@ if(isset($_POST['elimina'])){
     ?>
     <div class="container" style="width: 70%;">
       <div class="row tablerow">
-            <div class="col tablecol">
+            <div class="col tablecol" style="margin-right: 3px;">
               <p><?php echo $fetch_user['user_id']; ?></p>
             </div>
-            <div class="col tablecol">
+            <div class="col tablecol" style="margin-right: 3px;">
               <p><?php echo $fetch_user['username']; ?></p>
             </div>
             <div class="col tablecol">

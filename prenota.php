@@ -36,7 +36,7 @@ if(isset($_POST['prenota'])){
             }else{
               $message[] = "Non è consentito prenotare il campo per più di due ore nello stesso giorno!";
             }
-          }else{
+          }elseif($durata == 1){
             if(mysqli_num_rows($control_query) < 2){
               $prenot_query = mysqli_query($conn, "SELECT * FROM `prenotazioni` WHERE data = '$data' AND ora = '$ora'") or die('query failed');
               if(mysqli_num_rows($prenot_query) == 0){
@@ -49,6 +49,8 @@ if(isset($_POST['prenota'])){
             }else{
               $message[] = "Non è consentito prenotare il campo per più di due ore nello stesso giorno!";
             }
+          }else{
+            $message[] = "Il campo può essere prenotato per 1 o 2 ore al giorno!";
           }
         }else{
           $message[] = "Non è consentito prenotare per più di due ore consecutive!";
@@ -57,7 +59,7 @@ if(isset($_POST['prenota'])){
         $message[] = "Non è consentito prenotare al di fuori dell'orario di apertura!";
       }
     }else{
-      if(intval($data) - intval($today) <= 1){
+      if($data == $today){
         $message[] = "Attenzione! Il campo dev'essere prenotato almeno un giorno prima per consentire allo staff di predisporre le atrezzature!";
       }else{
         $message[] = "Attenzione! Non è consentito prenotare in una data già trascorsa!";
@@ -100,6 +102,11 @@ if(isset($_POST['prenota'])){
         }
 
     </style>
+    <script>
+      function prenota(){
+        document.getElementById("form_prenota").style.display = " ";
+      }
+    </script>
 </head>
 <body>
   <?php include 'navbar.php';
@@ -110,9 +117,20 @@ if(isset($_POST['prenota'])){
     <div class="container">
     <img src="img/title.png" alt="" srcset="">
       <h1 style = "text-align: center;">Le tue prenotazioni</h1>
-      <div class="container formprenota" style="padding:10px; width: 70%; text-align: center;">
+      <div class="container" style="width: 70%; text-align: center;">
+      <div class="row">
+        <div class="col">
+          <div class="btn-group">
+            <a href="" class="btn btn-secondary">Prenota</a>
+            <a href="eliminaprenotazione.php" class="btn btn-danger">Elimina</a>
+          </div>
+        </div>
+      </div>
+      </div>
+      <div class="container formprenota" id="form_prenota" style="padding:10px; width: 70%; text-align: center;">
         <h3>Prenota ora</h3>
-        <form action="" method="post" onload=setData()>
+        <p>Tariffa oraria: <?php echo $tariffa ?>€</p>
+        <form action="" method="post">
           <div class="row tablerow">
             <div class="col">
             Data: <input type="date" name="data" id="date" value="<?php echo date('Y-m-d'); ?>">
@@ -150,16 +168,16 @@ if(isset($_POST['prenota'])){
       if(mysqli_num_rows($prenotazioni) > 0){
         echo '<div class="container" style="width: 70%;">
         <div class="row tablerow">
-              <div class="col tablecol" style="background-color: rgb(138, 179, 248)">
+              <div class="col tablecol" style="background-color: rgb(138, 179, 248); margin-right: 3px;">
                 <p>Data:</p>
               </div>
-              <div class="col tablecol" style="background-color: rgb(138, 179, 248)">
+              <div class="col tablecol" style="background-color: rgb(138, 179, 248); margin-right: 3px;">
                 <p>Ora:</p>
               </div>
-              <div class="col tablecol" style="background-color: rgb(138, 179, 248)">
+              <div class="col tablecol" style="background-color: rgb(138, 179, 248); margin-right: 3px;">
                 <p>Durata(ore):</p>
               </div>
-              <div class="col tablecol" style="background-color: rgb(138, 179, 248)">
+              <div class="col tablecol" style="background-color: rgb(138, 179, 248); margin-right: 3px;">
               <p>Tariffa (oraria):</p>
             </div>
             <div class="col tablecol" style="background-color: rgb(138, 179, 248)">
@@ -171,16 +189,16 @@ if(isset($_POST['prenota'])){
       ?>
       <div class="container" style="width: 70%;">
       <div class="row tablerow">
-            <div class="col tablecol">
+            <div class="col tablecol" style="margin-right: 3px;">
               <p><?php echo date('d-m-Y',strtotime($fetch_prenotazioni['data'])); ?></p>
             </div>
-            <div class="col tablecol">
+            <div class="col tablecol" style="margin-right: 3px;">
               <p><?php echo $fetch_prenotazioni['ora']; ?>:00</p>
             </div>
-            <div class="col tablecol">
+            <div class="col tablecol" style="margin-right: 3px;">
               <p><?php echo $fetch_prenotazioni['durata']; ?></p>
             </div>
-            <div class="col tablecol">
+            <div class="col tablecol" style="margin-right: 3px;">
               <p><?php echo $fetch_prenotazioni['tariffa_prenotazione']; ?>€</p>
             </div>
             <div class="col tablecol">

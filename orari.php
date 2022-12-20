@@ -93,7 +93,7 @@ if(isset($_POST['orario'])){
       <h3 class="titlepage" style="margin:auto; padding: 5px;">Orario del giorno <?php echo $dataday ?></h3>
         <div class="container" style="width: 50%;">
           <div class="row tablerow">
-            <div class="col tablecol" style="background-color: rgb(138, 179, 248)">
+            <div class="col tablecol" style="background-color: rgb(138, 179, 248); margin-right: 3px;">
               14:00 - 15:00
             </div>
             <div class="col tablecol">
@@ -101,7 +101,7 @@ if(isset($_POST['orario'])){
             </div>
           </div>
           <div class="row tablerow">
-            <div class="col tablecol" style="background-color: rgb(138, 179, 248)">
+            <div class="col tablecol" style="background-color: rgb(138, 179, 248); margin-right: 3px;">
               15:00 - 16:00
             </div>
             <div class="col tablecol">
@@ -109,7 +109,7 @@ if(isset($_POST['orario'])){
             </div>
           </div>
           <div class="row tablerow">
-            <div class="col tablecol" style="background-color: rgb(138, 179, 248)">
+            <div class="col tablecol" style="background-color: rgb(138, 179, 248); margin-right: 3px;">
               16:00 - 17:00
             </div>
             <div class="col tablecol">
@@ -117,7 +117,7 @@ if(isset($_POST['orario'])){
             </div>
           </div>
           <div class="row tablerow">
-            <div class="col tablecol" style="background-color: rgb(138, 179, 248)">
+            <div class="col tablecol" style="background-color: rgb(138, 179, 248); margin-right: 3px;">
               17:00 - 18:00
             </div>
             <div class="col tablecol">
@@ -125,7 +125,7 @@ if(isset($_POST['orario'])){
             </div>
           </div>
           <div class="row tablerow">
-            <div class="col tablecol" style="background-color: rgb(138, 179, 248)">
+            <div class="col tablecol" style="background-color: rgb(138, 179, 248); margin-right: 3px;">
               18:00 - 19:00
             </div>
             <div class="col tablecol">
@@ -133,7 +133,7 @@ if(isset($_POST['orario'])){
             </div>
           </div>
           <div class="row tablerow">
-            <div class="col tablecol" style="background-color: rgb(138, 179, 248)">
+            <div class="col tablecol" style="background-color: rgb(138, 179, 248); margin-right: 3px;">
               19:00 - 20:00
             </div>
             <div class="col tablecol">
@@ -141,7 +141,7 @@ if(isset($_POST['orario'])){
             </div>
           </div>
           <div class="row tablerow">
-            <div class="col tablecol" style="background-color: rgb(138, 179, 248)">
+            <div class="col tablecol" style="background-color: rgb(138, 179, 248); margin-right: 3px;">
               20:00 - 21:00
             </div>
             <div class="col tablecol">
@@ -149,7 +149,7 @@ if(isset($_POST['orario'])){
             </div>
           </div>
           <div class="row tablerow">
-            <div class="col tablecol" style="background-color: rgb(138, 179, 248)">
+            <div class="col tablecol" style="background-color: rgb(138, 179, 248); margin-right: 3px;">
               21:00 - 22:00
             </div>
             <div class="col tablecol">
@@ -157,7 +157,7 @@ if(isset($_POST['orario'])){
             </div>
           </div>
           <div class="row tablerow">
-            <div class="col tablecol" style="background-color: rgb(138, 179, 248)">
+            <div class="col tablecol" style="background-color: rgb(138, 179, 248); margin-right: 3px;">
               22:00 - 23:00
             </div>
             <div class="col tablecol">
