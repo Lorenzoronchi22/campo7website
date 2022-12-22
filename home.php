@@ -7,6 +7,9 @@ $user_id = $_SESSION['user_id'];
 if(!isset($user_id)){
   header('location:login.php');
 }
+$tariffa_query = mysqli_query($conn, "SELECT * FROM `tariffe` WHERE tariffa_id = '1'") or die('query failed');
+$fetch_tariffa = mysqli_fetch_assoc($tariffa_query);
+$tariffa = $fetch_tariffa['tariffacampo'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +31,8 @@ if(!isset($user_id)){
     <div class="container" style="padding: 10px;">
         <img src="img/title.png" srcset="">
       <div class="container">
-      <h2 style="padding-top: 20px; text-align: center;">La Delizia Arena</h2>
+      <h2 style="padding-top: 20px; text-align: center;">Delizia Arena</h2>
+      </div>
         <div class="row" style="padding-top: 20px;">
           <div class="col">
           <p>La polisportiva comunale di Caino è un centro polivalente che nasce nel 1977 su un terreno donato al comune da Luigi Casnighi.
@@ -37,6 +41,14 @@ if(!isset($user_id)){
             Su questo sito è possibile prenotare solamente il campo da gioco per un massimo di due ore al giorno, per richiedere l'utilizzo del tendone con stand gastronomico è necessario comunicarlo direttamente la polisportiva attraverso i contatti in fondo alla pagina. <br>
             Il campo dispone inoltre di spogliatoi e docce anch'esse rinnovate recentemente il cui utilizzo è compreso nella prenotazione.
           </p>
+          <div class="row" style= "text-align: center; color: white; background-color: rgb(56, 119, 227); border: 1px solid blue; width: 70%; margin: auto;">
+            <div class="col">
+              <h5>Tariffa: <br> <?php echo $tariffa ?>€</h5>
+            </div>
+            <div class="col">
+              <h5>Orario aperture: 14:00 - 23:00</h5>
+            </div>
+          </div>
           </div>
           <div class="col">
           <img src="img/campo.jpg" alt="" srcset="">

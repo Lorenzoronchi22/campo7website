@@ -113,7 +113,7 @@ if(isset($_POST['updatetar'])){
         <div class="row tablerow">
             <div class="col tablecol" style="margin-right: 3px;">
                 <?php 
-                $users = mysqli_query($conn, "SELECT * FROM `users`");
+                $users = mysqli_query($conn, "SELECT * FROM `users` WHERE user_type ='user'");
                 $n_users = mysqli_num_rows($users);
                 ?>
                 <h4>Utenti</h4>
